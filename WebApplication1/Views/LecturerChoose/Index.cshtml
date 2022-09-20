@@ -1,0 +1,57 @@
+﻿@using OnlineChat.Models.Lecturer;
+@model OnlineChat.ViewModels.CreateModel
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{ }
+<select id="choose">
+    <option>Angular</option>
+    <option>React</option>
+    <option>Vue</option>
+    <option>NodeJs</option>
+</select>
+<div class="form-group">
+    <input id="sub" type="submit" value="Выбрать" class="btn btn-primary pink" />
+</div>
+
+@foreach (LecturerModel user in ViewBag.Users)
+{
+
+
+
+<a class="lec-go" href=@String.Format("/TeacherCardEdit/ShowLec/"+@user.UserId)>
+
+    @if (user.Photo != null)
+    {
+<div class="lec-go-img" style="background:url(@String.Format("data:" + user.PhotoName + ";base64,{0}", Convert.ToBase64String(user.Photo)) )"></div>}
+    @if (user.Photo == null)
+    {
+
+<div class="lec-go-img" style="background:url(https://elitas.ru/images/no-image-large.jpg)"></div>}
+
+    <div class="lec-go-fio">
+        @user.FIO
+    </div>
+</a>}
+<script type="text/javascript">
+
+    document.getElementById("sub").addEventListener('click', () => {
+        let id = 0;
+        switch (document.getElementById("choose").value) {
+            case "Angular":
+                id = 2;
+                break;
+            case "React":
+                id = 3;
+                break;
+            case "Vue":
+                id = 4;
+                break;
+            case "NodeJs":
+                id = 5;
+                break;
+        }
+        window.location.href = '/LecturerChoose/Index?catId='+id;
+
+    });</script>
+

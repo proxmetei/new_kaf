@@ -1,0 +1,43 @@
+﻿@using OnlineChat.ViewModels;
+@model OnlineChat.ViewModels.CreateModel;
+@{ }
+<h1>Кафедра математического обеспечения ЭВМ</h1>
+<h2>
+    Общая характеристика кафедры
+</h2>
+<div class="common_info">
+    Основные научные интересы кафедры представлены следующими течениями – численные методы механики, численные методы сингулярно возмущенных задач, фундаментальная информатика, интеллектуальные информационные технологии и математические основы компьютерной графики.
+</div>
+<h2>
+    История
+</h2>
+<div class="history_info">
+    Из кафедры вычислительной математики выделилась ка­федра математического обеспечения ЭВМ в 1982 г.
+</div>
+<h2>
+    Заведующий кафедры
+</h2>
+<div class="zav_info">
+    <div class="zav-img-cont"><img class="zav_img" src="../../Images/zav.jpeg"></div>
+    <div clsas="zav-text">
+        <b>Абрамов Геннадий Владимирович</b>
+        - доктор технических наук
+    </div>
+</div>
+@if (ViewBag.Admin)
+{
+    <script type="text/javascript">
+        let b = true;
+        function openmodal() {
+            if (b) {
+                document.getElementById('modal').classList.remove('notdisp');
+            }
+            else {
+                document.getElementById('modal').classList.add('notdisp');
+            }
+            b = !b;
+        }
+        document.getElementById('create').addEventListener('click', openmodal);</script>
+}
+
+

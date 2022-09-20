@@ -1,0 +1,70 @@
+﻿@using OnlineChat.Models.Users
+@using OnlineChat.Models.Lecturer
+@model OnlineChat.ViewModels.QuizModel
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{ }
+    <form method="post" enctype="multipart/form-data" asp-controller="LecturerQuiz" asp-action="Save">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="teacher-info">
+            <div class="teacher-info__add">
+                <h3>Опыт работы</h3>
+                <input asp-for="Experience" class="form-control" />
+                <span asp-validation-for="Experience" class="text-danger"></span>
+
+            </div>
+            <div class="form-group">
+                <h3>Занятость</h3>
+                <input asp-for="Workload" class="form-control" />
+                <span asp-validation-for="Workload" class="text-danger"></span>
+            </div>
+            <div class="teacher-info__add">
+                <h3>   Аспирантура</h3>
+                @Html.EditorFor(model => model.Aspirantura)
+
+            </div>
+            <div class="teacher-info__add">
+                <h3>Близость к тематикам</h3>
+                <div>
+                    <div class="form-group">
+                        <label asp-for="Angular" class="control-label"></label>
+                        <input asp-for="Angular" class="form-control" />
+                        <span asp-validation-for="Angular" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="React" class="control-label"></label>
+                        <input asp-for="React" class="form-control" />
+                        <span asp-validation-for="React" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Vue" class="control-label"></label>
+                        <input asp-for="Vue" class="form-control" />
+                        <span asp-validation-for="Vue" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="NodeJs" class="control-label"></label>
+                        <input asp-for="NodeJs" class="form-control" />
+                        <span asp-validation-for="NodeJs" class="text-danger"></span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        @*<div class="form-group notdisp">
+            <label asp-for="UserId" class="control-label">Название</label>
+            <input type="text" asp-for="UserId" class="form-control" value=" @ViewBag.Lecturer.UserId " />
+            <span asp-validation-for="UserId" class="text-danger"></span>
+        </div>*@
+        <div class="form-group notdisp">
+            <label asp-for="LecturerId" class="control-label">Название</label>
+            <input type="text" asp-for="LecturerId" class="form-control" value=" @ViewBag.Lecturer.Id " />
+            <span asp-validation-for="LecturerId" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <input type="submit" value=" Сохранить" class="btn btn-primary pink" />
+        </div>
+    </form>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
